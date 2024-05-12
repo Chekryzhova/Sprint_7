@@ -31,7 +31,7 @@ class TestAuthCourier:
         }
         auth_courier_requests = ScooterApi.login_courier(auth_body)
 
-        assert auth_courier_requests.status_code == 400 and auth_courier_requests.json()["message"] == "Недостаточно данных для входа"
+        assert auth_courier_requests.status_code == 400 and auth_courier_requests.json()["message"] == data.AUTH_COURIER_400_RESPONSE
 
     @allure.title('Запрос на авторизацию несуществующего курьера')
     @allure.description('Пытаемся авторизоваться несуществующим курьером. Проверяем, что вернулась ошибка и текст ошибки: "Учетная запись не найдена"')
@@ -43,7 +43,7 @@ class TestAuthCourier:
     }
         auth_courier_requests = ScooterApi.login_courier(body)
 
-        assert auth_courier_requests.status_code == 404 and auth_courier_requests.json()["message"] == "Учетная запись не найдена"
+        assert auth_courier_requests.status_code == 404 and auth_courier_requests.json()["message"] == data.AUTH_COURIER_404_RESPONSE
 
     @allure.title('Запрос на авторизацию курьера с неправильным логином')
     @allure.description('Создаём курьера, а затем пытаемся залогиниться им с неправильным логином. Проверяем, что вернулась ошибка и текст ошибки: "Учетная запись не найдена"')
@@ -56,7 +56,7 @@ class TestAuthCourier:
         }
         auth_courier_requests = ScooterApi.login_courier(auth_body)
 
-        assert auth_courier_requests.status_code == 404 and auth_courier_requests.json()["message"] == "Учетная запись не найдена"
+        assert auth_courier_requests.status_code == 404 and auth_courier_requests.json()["message"] == data.AUTH_COURIER_404_RESPONSE
 
 
 

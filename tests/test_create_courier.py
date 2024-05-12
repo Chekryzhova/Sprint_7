@@ -19,7 +19,7 @@ class TestCourierCreate:
         ScooterApi.create_courier(data.CREATE_COURIER)
         create_similar_courier = ScooterApi.create_courier(data.CREATE_COURIER)
 
-        assert create_similar_courier.status_code == 409 and create_similar_courier.json()["message"] == "Этот логин уже используется"
+        assert create_similar_courier.status_code == 409 and create_similar_courier.json()["message"] == data.CREATE_COURIER_409_RESPONSE
 
     @allure.title('Проверяем, что если одного из полей нет, запрос возвращает ошибку')
     @allure.description('Создаём курьера без пароля и проверяем,что вернулась ошибка.  Текст ошибки: "Недостаточно данных для создания учетной записи"')
@@ -28,5 +28,5 @@ class TestCourierCreate:
         body = helper.ChangeTestData.change_data_create_courier("password", "")
         create_courier_requests = ScooterApi.create_courier(body)
 
-        assert create_courier_requests.status_code == 400 and create_courier_requests.json()["message"] == "Недостаточно данных для создания учетной записи"
+        assert create_courier_requests.status_code == 400 and create_courier_requests.json()["message"] == data.CREATE_COURIER_400_RESPONSE
 

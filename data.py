@@ -58,3 +58,8 @@ CREATE_ORDER = [
     "color": ["BLACK", "GREY"]
 }
 ]
+
+CREATE_COURIER_409_RESPONSE = "Этот логин уже используется"
+CREATE_COURIER_400_RESPONSE = "Недостаточно данных для создания учетной записи"
+AUTH_COURIER_400_RESPONSE = "Недостаточно данных для входа"
+AUTH_COURIER_404_RESPONSE = "Учетная запись не найдена"
